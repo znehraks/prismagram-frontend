@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
-import useInput from "../Hooks/useInput";
+import Input from "../../Components/Input";
+import Button from "../../Components/Button";
 
 const Wrapper = styled.div`
     min-height: 80vh;
@@ -48,43 +47,38 @@ const Form = styled(Box)`
 `;
 
 
-export default() => {
-    
-    const [action, setAction] = useState("logIn");
-    const userName = useInput("");
-    const password = useInput("");
-    const firstName = useInput("");
-    const lastName = useInput("");
-    const email = useInput("");
-
-    console.log(
-        userName, 
-        password,
-        firstName,
-        lastName,
-        email);
-
-    return( 
-    <Wrapper>
+export default({
+    action,
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    setAction,
+    onSubmit
+}) => (<Wrapper>
         <Form>
-        {action === "logIn" ? (
-          <form>
-            <Input placeholder={"Username"} {...userName} />
-            <Input placeholder={"Password"} {...password} type="password" />
+        {action === "logIn" && (
+          <form onSubmit={onSubmit}>
+            <Input type="hidden"></Input>
+            <Input placeholder={"Email"} {...email} type="email"/>
+            <Input placeholder={"Password"} {...password} type="password"></Input>
             <Button text={"Log in"} />
           </form>
-        ) : (
-          <form>
+         )}
+         {action === "signUp" && (
+          <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName}/>
             <Input placeholder={"Last name"} {...lastName}/>
             <Input placeholder={"Email"} {...email} type="email"/>
+            <Input placeholder={"password"} {...password} type="password"></Input>
             <Input placeholder={"Username"} {...userName}/>
-            <Input placeholder={"Password"} {...password} type="password"/>
             <Button text={"Sign up"} />
           </form>
         )}
       </Form>
-        <StateChanger>
+      {action !== "logIn" && (
+      <StateChanger>
         {action === "logIn" ? (
           <>
             Don't have an account?{" "}
@@ -97,6 +91,13 @@ export default() => {
           </>
         )}
       </StateChanger>
-    </Wrapper>
-    ); 
-}
+      )}
+        
+
+
+
+
+
+        
+    </Wrapper> 
+);
