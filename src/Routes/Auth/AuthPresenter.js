@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
@@ -59,22 +60,32 @@ export default({
 }) => (<Wrapper>
         <Form>
         {action === "logIn" && (
-          <form onSubmit={onSubmit}>
-            <Input type="hidden"></Input>
-            <Input placeholder={"Email"} {...email} type="email"/>
-            <Input placeholder={"Password"} {...password} type="password"></Input>
-            <Button text={"Log in"} />
-          </form>
+          <>
+            <Helmet>
+              <title>Log In | Prismagram</title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input type="hidden"></Input>
+              <Input placeholder={"Email"} {...email} type="email"/>
+              <Input placeholder={"Password"} {...password} type="password"></Input>
+              <Button text={"Log in"} />
+            </form>
+          </>
          )}
          {action === "signUp" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"First name"} {...firstName}/>
-            <Input placeholder={"Last name"} {...lastName}/>
-            <Input placeholder={"Email"} {...email} type="email"/>
-            <Input placeholder={"password"} {...password} type="password"></Input>
-            <Input placeholder={"Username"} {...userName}/>
-            <Button text={"Sign up"} />
-          </form>
+          <>
+            <Helmet>
+              <title>Sign Up | Prismagram</title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"First name"} {...firstName}/>
+              <Input placeholder={"Last name"} {...lastName}/>
+              <Input placeholder={"Email"} {...email} type="email"/>
+              <Input placeholder={"password"} {...password} type="password"></Input>
+              <Input placeholder={"Username"} {...userName}/>
+              <Button text={"Sign up"} />
+            </form>
+          </>
         )}
       </Form>
       {action !== "logIn" && (
