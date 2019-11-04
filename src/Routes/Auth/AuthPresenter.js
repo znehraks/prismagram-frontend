@@ -103,12 +103,5 @@ export default({
         )}
       </StateChanger>
       )}
-        
-
-
-
-
-
-        
     </Wrapper> 
 );
