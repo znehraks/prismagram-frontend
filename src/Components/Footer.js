@@ -9,6 +9,8 @@ const Footer = styled.footer`
   font-weight: 600;
   font-size: 12px;
   margin: 50px 50px;
+  position: relative;
+  bottom: 0;
 `;
 
 const List = styled.ul`
@@ -27,6 +29,7 @@ const Link = styled.a`
 
 const Copyright = styled.span`
   color: ${props => props.theme.darkGreyColor};
+  margin-left: 16px;
 `;
 
 export default () => (
