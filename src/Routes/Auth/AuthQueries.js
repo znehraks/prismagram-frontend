@@ -5,11 +5,11 @@ export const LOG_IN = gql`
         $email: String!
         $password: String!
         ){
-        login(
-            email: $email
-            password: $password 
-        )
-    }
+            login(
+                email: $email
+                password: $password 
+            )
+        }
 `;
 
 export const CREATE_ACCOUNT = gql`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Footer = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
   align-items: center;
   text-transform: uppercase;
   font-weight: 600;
@@ -11,6 +11,13 @@ const Footer = styled.footer`
   margin: 50px 50px;
   position: relative;
   bottom: 0;
+`;
+
+const FooterWrapper = styled.div`
+    width: 100%;
+    max-width: ${props => props.theme.maxWidth};
+    display: flex;
+    justify-content: center;
 `;
 
 const List = styled.ul`
@@ -34,6 +41,7 @@ const Copyright = styled.span`
 
 export default () => (
   <Footer>
+    <FooterWrapper>
     <List>
       <ListItem>
         <Link href="#">about us</Link>
@@ -70,5 +78,6 @@ export default () => (
       </ListItem>
     </List>
     <Copyright>Instaclone {new Date().getFullYear()} &copy;</Copyright>
+    </FooterWrapper>
   </Footer>
 );
